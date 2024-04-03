@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset='utf-8' />
-<script src='../calendrier/resources/js/call.js'></script>
+<!--<script src='../calendrier/resources/js/call.js'></script>-->
 <script>
 
   document.addEventListener('DOMContentLoaded', function() {
