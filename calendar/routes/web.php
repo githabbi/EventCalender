@@ -34,3 +34,6 @@ Route::get('/booj', function () {
    return view('booj');
 })->name('login');
 Route::post('/event/details', 'EventController@getEventDetails')->name('event.details');
+Route::get('/jjj', function () {
+   return view('create-event');
+});
