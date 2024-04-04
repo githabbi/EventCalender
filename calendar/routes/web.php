@@ -16,6 +16,16 @@ use App\Http\Controllers\EventController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\Auth\LoginController;
+
+//Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+//Route::post('/login', [LoginController::class, 'login']);
+use App\Http\Controllers\SuserController;
+use App\Http\Controllers\AdminController;
+
+Route::get('/suser', [SuserController::class, 'index'])->name('suser.index');
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+
 Route::get('/', function () {
    return view('Welcome');
 })->name('welcome');   
@@ -27,12 +37,15 @@ Route::get('/dbconn',function(){
 Route::get('/calendar', function () {
    return view('calendar');
 })->name('calendar');
+Route::post('/login', function () {
+   return view('login');
+})->name('login');
 Route::get('/login', function () {
-   return view('Login');
-})->name('login');
-Route::get('/booj', function () {
-   return view('booj');
-})->name('login');
+   return view('login');
+})->name('loginget');
+
+
+
 Route::post('/event/details', 'EventController@getEventDetails')->name('event.details');
 Route::get('/jjj', function () {
    return view('create-event');

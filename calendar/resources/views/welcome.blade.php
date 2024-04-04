@@ -20,7 +20,7 @@
             <h3>to the SJE Calender</h3>
             <div class="btn-box">
                 <a href="{{ route('calendar') }}">Explore </a>
-                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('loginget') }}">Login</a>
             </div>
         </div>
         <div class="image">

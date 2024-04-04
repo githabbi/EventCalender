@@ -12,24 +12,53 @@
 </head>
 <body>
     <div class="wrapper">
-        <form action="">
+        <form method="POST" action="">
+            @csrf
             <div class="login">
-                <img class="img" src="{{ asset('assets/imgs/login2.png') }}">
-                <h1>Login</h1>    
+                <h1><i>Login</i></h1>
             </div>
             <div class="input-box">
-                <input type="text" placeholder="Username" required>
-                <i class="fa-solid fa-user"></i>
+                <input type="text" name="username" placeholder="Username" required>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Password" required>
-                <i class="fa-solid fa-unlock-keyhole"></i>
+                <input type="password" name="password" placeholder="Password" required>
             </div>
             <div class="remember-forgot">
-                <label><input type="checkbox">Remember me</label>
+                <label><input type="checkbox" name="remember">Remember me</label>
             </div>
-            <button type="submit" class="button">Login</button>
+            <button type="submit">Login</button>
+           
         </form>
+        <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+
+
+    $conn = DB::connection()->getPdo();
+
+ 
+
+    $sql = "SELECT * FROM suser WHERE username='$username' AND password='$password'";
+    $sql1 = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
+    $result = $conn->query($sql);
+    $result1 = $conn->query($sql1);
+    if ($result->rowCount() > 0) {
+        // Redirect to suser page if login successful
+        return redirect()->route('suser.index');
+    } elseif ($result1->rowCount() > 0) {
+        // Redirect to admin page if login successful
+        return redirect()->route('admin.index');
+    } else {
+        // Nom d'utilisateur ou mot de passe incorrect
+        echo "<script>alert('Invalid username or password');</script>";
+    }
+
+ 
+}
+?>
+
 
     </div>
 </body>
