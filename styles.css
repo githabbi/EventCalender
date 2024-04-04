@@ -1,0 +1,147 @@
+/* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body styles */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #EEEEEE; /* White background */
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  header h1 {
+    color: #222831; /* Dark blue color */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .stats {
+    background-color: #FFFFFF; /* White background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stats h2 {
+    color: #393E46; /* Light blue color */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four columns */
+    gap: 20px;
+  }
+  
+  .stat-item {
+    text-align: center;
+    padding: 20px;
+    background-color: #393E46; /* Light blue color */
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .stat-item i {
+    color: #00ADB5; /* Teal color */
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .stat-item h3 {
+    color: #00ADB5; /* Teal color */
+    margin: 0;
+  }
+  
+  .stat-item p {
+    color: #EEEEEE; /* White color */
+    margin: 5px 0;
+  }
+  
+  .event-filter {
+    text-align: center;
+    background-color: #FFFFFF; /* White background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  #filter-options {
+    margin-bottom: 20px;
+  }
+  
+  #filter-select {
+    padding: 5px;
+    margin-right: 10px;
+  }
+  
+  #filter-options button {
+    padding: 5px 10px;
+    background-color: #00ADB5; /* Teal color */
+    color: #EEEEEE; /* White color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #filter-options button:hover {
+    background-color: #007E8A; /* Darker teal color */
+  }
+  
+  .event-list {
+    background-color: #FFFFFF; /* White background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .event-list h2 {
+    color: #393E46; /* Light blue color */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #event-table {
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #EEEEEE; /* Light gray color */
+  }
+  
+  th {
+    background-color: #393E46; /* Light blue color */
+    color: #EEEEEE; /* White color */
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #FFFFFF; /* White color */
+  }
+  
+  tr:nth-child(even) {
+    background-color: #EEEEEE; /* Light gray color */
+  }
+  
+  tr:hover {
+    background-color: #00ADB5; /* Teal color */
+    color: #FFFFFF; /* White color */
+  }
+  
