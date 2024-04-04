@@ -20,61 +20,54 @@
       editable:false,
       selectable: true,
       events: [
-        {
-          title: 'Business Lunch',
-          start: '2024-01-03T13:00:00',
-          constraint: 'businessHours'
-        },
-        {
-          title: 'code in the dark',
-          start: '2024-03-24T14:00:00',
-          end: '2024-03-25T14:00:00'
-        },
-        {
-          title: 'Meeting',
-          start: '2024-01-13T11:00:00',
-          constraint: 'availableForMeeting', // defined below
-          color: '#257e4a'
-        },
-        {
-          title: 'Conference',
-          start: '2024-01-18',
-          end: '2024-01-20'
-        },
-        {
-          title: 'Party',
-          start: '2024-01-29T20:00:00'
-        },
-
-        // areas where "Meeting" must be dropped
-        {
-          groupId: 'availableForMeeting',
-          start: '2024-01-11T10:00:00',
-          end: '2024-01-11T16:00:00',
-          display: 'background'
-        },
-        {
-          groupId: 'availableForMeeting',
-          start: '2024-01-13T10:00:00',
-          end: '2024-01-13T16:00:00',
-          display: 'background'
-        },
-
-        // red areas where no events can be dropped
-        {
-          start: '2024-01-24',
-          end: '2024-01-28',
-          overlap: false,
-          display: 'background',
-          color: '#ff9f89'
-        },
-        {
-          start: '2024-01-06',
-          end: '2024-01-08',
-          overlap: false,
-          display: 'background',
-          color: '#ff9f89'
+       <?php
+    $conn = DB::connection()->getPdo();
+    $sql ="SELECT
+    title,
+    IF(startdate IS NOT NULL AND starttime IS NOT NULL, CONCAT(startdate, 'T', starttime), IF(startdate IS NOT NULL, CONCAT(startdate, ''), NULL)) AS startt,
+    IF(enddate IS NOT NULL AND endtime IS NOT NULL, CONCAT(enddate, 'T', endtime), IF(enddate IS NOT NULL, CONCAT(enddate, ''), NULL)) AS endd,
+    constraintt AS constraintt,
+    IF(constraintstartdate IS NOT NULL AND constraintstarttime IS NOT NULL, CONCAT(constraintstartdate, 'T', constraintstarttime), IF(constraintstartdate IS NOT NULL, CONCAT(constraintstartdate, ''), NULL)) AS startcons,
+    IF(constraintenddate IS NOT NULL AND constraintendtime IS NOT NULL, CONCAT(constraintenddate, 'T', constraintendtime), IF(constraintenddate IS NOT NULL, CONCAT(constraintenddate, ''), NULL)) AS endcons
+FROM
+    events";
+    $result = $conn->query($sql);
+    if ($result->rowCount() > 0) {
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            if (!is_null($row["title"]) && !is_null($row["constraintt"])) {
+                echo "{
+                    title: '" . $row["title"] . "',
+                    start: '" . $row["startt"] . "',
+                    end: '" . $row["endd"] . "',
+                    color: '#257e4a',
+                    groupId: '" . $row["constraintt"] . "'
+                },";
+              
+                    echo "{
+                        groupId: '" . $row["constraintt"] . "',
+                        start: '" . $row["startcons"] . "',
+                        end: '" . $row["endcons"] . "',
+                        display: 'background'
+                    },";
+                
+            } elseif  (!is_null($row["title"]) && is_null($row["constraintt"])){
+                echo "{
+                    title: '" . $row["title"] . "',
+                    start: '" . $row["startt"] . "',
+                    end: '" . $row["endd"] . "',
+                    
+                },";}else if  (is_null($row["title"])){
+                echo "{
+                    start: '" . $row["startt"] . "',
+                    end: '" . $row["endd"] . "',
+                    overlap: false,
+                    display: 'background',
+                    color: '#ff9f89'
+                },";
+            }
         }
+    }
+?>
       ]
     });
 

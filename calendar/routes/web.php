@@ -20,3 +20,6 @@ Route::get('/',function(){
 });   
 Route::get('/send',[PHPMailercontroller::class, 'index'])->name('send.php.mailer');
 Route::post('/sent',[PHPMailercontroller::class, 'store'])->name('send.php.mailer.submit');
+Route::get('/dbconn',function(){
+   return view('dbconn');
+});
