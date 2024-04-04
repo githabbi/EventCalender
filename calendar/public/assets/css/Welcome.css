@@ -106,12 +106,23 @@ width: 100%;
     justify-content: right;
     align-items: center;
 }
+@keyframes rotateImage {
+    0% {
+      transform: rotateY(0deg);
+    }
+    100% {
+      transform: rotateY(360deg);
+    }
+  }
 
 .img {
     max-width: 30%;
     height: auto;
     display: block;
-}
+    display: inline-block;
+      animation: rotateImage 5s linear ; /* Animation de rotation en boucle */
+    }
+
 
 @media screen and (max-width: 768px) {
     .wrapper {

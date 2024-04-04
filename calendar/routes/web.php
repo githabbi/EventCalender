@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
     
 use App\Http\Controllers\PHPMailercontroller;
+use App\Http\Controllers\EventController;
     
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,21 @@ use App\Http\Controllers\PHPMailercontroller;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',function(){
-   return view('calendrierr');
-});   
+Route::get('/', function () {
+   return view('Welcome');
+})->name('welcome');   
 Route::get('/send',[PHPMailercontroller::class, 'index'])->name('send.php.mailer');
 Route::post('/sent',[PHPMailercontroller::class, 'store'])->name('send.php.mailer.submit');
 Route::get('/dbconn',function(){
    return view('dbconn');
 });
+Route::get('/calendar', function () {
+   return view('calendar');
+})->name('calendar');
+Route::get('/login', function () {
+   return view('Login');
+})->name('login');
+Route::get('/booj', function () {
+   return view('booj');
+})->name('login');
+Route::post('/event/details', 'EventController@getEventDetails')->name('event.details');
