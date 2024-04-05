@@ -13,24 +13,27 @@
 <body>
     <div class="wrapper">
         <form method="POST" action="">
-            @csrf
+           @csrf
             <div class="login">
-                <h1><i>Login</i></h1>
+                <img class="img" src="{{ asset('assets/imgs/login2.png') }}">
+                <h1>Login</h1>    
             </div>
             <div class="input-box">
                 <input type="text" name="username" placeholder="Username" required>
+                <i class="fa-solid fa-user"></i>
             </div>
             <div class="input-box">
                 <input type="password" name="password" placeholder="Password" required>
+                <i class="fa-solid fa-unlock-keyhole"></i>
             </div>
             <div class="remember-forgot">
                 <label><input type="checkbox" name="remember">Remember me</label>
             </div>
-            <button type="submit">Login</button>
-           
-        </form>
-        <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            <button type="submit" name="login" class="button">Login</button>
+            
+<?php
+
+if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -45,19 +48,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $conn->query($sql);
     $result1 = $conn->query($sql1);
     if ($result->rowCount() > 0) {
-        // Redirect to suser page if login successful
-        return redirect()->route('suser.index');
+        // Redirect to calendar page if login successful
+        return redirect()->route('calendarr');
     } elseif ($result1->rowCount() > 0) {
-        // Redirect to admin page if login successful
-        return redirect()->route('admin.index');
+        // Redirect to calendar page if login successful
+        return redirect()->route('calendarrr');
     } else {
         // Nom d'utilisateur ou mot de passe incorrect
         echo "<script>alert('Invalid username or password');</script>";
     }
 
  
-}
-?>
+}?>
+           
+        </form>
+       
 
 
     </div>

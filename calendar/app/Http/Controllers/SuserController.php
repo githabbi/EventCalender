@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class SuserController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        return view('suser');
+        return view('calendar');
     }
 }

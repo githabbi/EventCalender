@@ -21,10 +21,10 @@ use App\Http\Controllers\Auth\LoginController;
 //Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 //Route::post('/login', [LoginController::class, 'login']);
 use App\Http\Controllers\SuserController;
-use App\Http\Controllers\AdminController;
 
-Route::get('/suser', [SuserController::class, 'index'])->name('suser.index');
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+
+Route::get('/calendar/id', [SuserController::class, 'index'])->name('calendarr');
+Route::get('/admin', [AdminController::class, 'index'])->name('calendarrr');
 
 Route::get('/', function () {
    return view('Welcome');
@@ -34,6 +34,7 @@ Route::post('/sent',[PHPMailercontroller::class, 'store'])->name('send.php.maile
 Route::get('/dbconn',function(){
    return view('dbconn');
 });
+
 Route::get('/calendar', function () {
    return view('calendar');
 })->name('calendar');
