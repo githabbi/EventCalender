@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropdown Profile Menu</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="profilePopup.css">
+</head>
+<body>
+
+<div class="profile-menu">
+  <button class="profile-button" onclick="toggleDropdown()"><i class="fas fa-user"></i> Your Username</button>
+  <div class="dropdown-content" id="dropdownContent">
+    <a href="#"><i class="fas fa-user-circle"></i> Profile</a>
+    <a href="#"><i class="fas fa-cog"></i> Settings</a>
+    <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+</div>
+
+<script src="profilePopup.js"></script>
+</body>
+</html>
