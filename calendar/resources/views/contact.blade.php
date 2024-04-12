@@ -41,7 +41,7 @@ https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css
 
   height: 100%;
   object-fit:fill;
-  width: 80%;
+
   
   padding-bottom: 110px;
   
@@ -58,6 +58,8 @@ https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css
 .rotate-image {
       display: inline-block;
       animation: rotateImage 5s linear ; /* Animation de rotation en boucle */
+      width: 60%;
+      
     }
   
 .contact-form {
@@ -177,7 +179,7 @@ https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css
 <body>
   <section class="contact">
     <div class="contact-image">
-        <img  class="rotate-image"  id="rotatingImage" src="https://www.supcomje.tn/assets/img/SJE_white.webp" />
+        <img  class="rotate-image"  id="rotatingImage" src="{{ asset('assets/imgs/login2.png') }}" />
     </div>
     <div class="contact-form">
       <h2><i>Your Questions Answered</i></h2>

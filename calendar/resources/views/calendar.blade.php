@@ -33,7 +33,7 @@
               center: 'title',
               right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
             },
-            initialDate: '2024-03-24',
+            initialDate: new Date(),
             navLinks: true, // can click day/week names to navigate views
             businessHours: true, // display business hours
             editable:false,
@@ -46,6 +46,7 @@
           IF(startdate IS NOT NULL AND starttime IS NOT NULL, CONCAT(startdate, 'T', starttime), IF(startdate IS NOT NULL, CONCAT(startdate, ''), NULL)) AS startt,
           IF(enddate IS NOT NULL AND endtime IS NOT NULL, CONCAT(enddate, 'T', endtime), IF(enddate IS NOT NULL, CONCAT(enddate, ''), NULL)) AS endd,
           constraintt AS constraintt,
+          urlimgg ,
           IF(constraintstartdate IS NOT NULL AND constraintstarttime IS NOT NULL, CONCAT(constraintstartdate, 'T', constraintstarttime), IF(constraintstartdate IS NOT NULL, CONCAT(constraintstartdate, ''), NULL)) AS startcons,
           IF(constraintenddate IS NOT NULL AND constraintendtime IS NOT NULL, CONCAT(constraintenddate, 'T', constraintendtime), IF(constraintenddate IS NOT NULL, CONCAT(constraintenddate, ''), NULL)) AS endcons
       FROM
@@ -91,6 +92,7 @@
             eventClick: function(info) {
       // Récupérer les informations de l'événement
       var title = info.event.title;
+      var urlimgg = info.event.urlimgg;
       var description = info.event.extendedProps.description;
       var start = info.event.start;
       var end = info.event.end;
@@ -140,6 +142,24 @@
         #393E46
         #00ADB5
         #EEEEEE */
+
+.fc-daygrid-day.fc-daygrid-selectable:hover {
+  cursor: pointer; /* Set cursor to pointer generally */
+}
+
+.fc-daygrid-day.fc-daygrid-selectable:hover::before {
+  content: ""; /* Create an empty element for styling */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://codepen.io/netsi1964/pen/DsAhE"); /* Replace with your custom cursor image URL */
+  background-repeat: no-repeat;
+  background-position: center; /* Center the image */
+  opacity: 0.3; /* Adjust opacity for desired visibility */
+}
+
  *{
 
 margin: 0;
@@ -165,7 +185,8 @@ font-family: "Montserrat", sans-serif;
     position: relative;
 width: 450px;
 height: 550px;
-background: url(https://raw.githubusercontent.com/githabbi/EventCalender/boj/images/CITD.jpg) no-repeat center -80px;
+background: url(urlimgg) no-repeat center -80px;
+
 background-size: cover;
 border-radius: 40px;
 overflow: hidden;
