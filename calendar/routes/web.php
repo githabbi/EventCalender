@@ -15,3 +15,9 @@ Route::get('/login', function () {
 Route::get('/', function () {
     return view('Welcome');
 })->name('welcome');
+Route::get('/j', function () {
+    return view('create-event');
+});
+Route::get('/k', function () {
+    return view('dashboard');
+});

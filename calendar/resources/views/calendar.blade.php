@@ -160,7 +160,7 @@
         </div>
 
         <!-- ========================= Main ==================== -->
-        <div class="main">
+        <div id="main" class="main">
             <div class="topbar">
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
@@ -178,12 +178,12 @@
                 </div>
             </div>
 
-            <!-- ======================= Cards ================== -->
+            <!-- ======================= dashboard ================== -->
             
 
 
             <!-- ======================= calendar ================== -->
-            <div id='calendar'></div>
+            <div  id='calendar'></div>
 <script>/*!
 FullCalendar Standard Bundle v6.1.11
 Docs & License: https://fullcalendar.io/docs/initialize-globals
